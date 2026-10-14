@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean, simple, and elegant to-do app built with Node.js">
+  <title>Todo App • Simple & Clean</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <main class="app-container">
+    <!-- File Protocol Notice Banner (shown only when opened as file://) -->
+    <div id="protocol-banner" class="protocol-banner" style="display: none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <span>You opened this as a local file. To connect with the Node.js server, open <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></span>
+    </div>
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="header-top">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h1>Focus Tasks</h1>
+        </div>
+        <div class="header-meta">
+          <span id="current-date" class="date-badge">Loading date...</span>
+        </div>
+      </div>
+      <p class="header-subtitle">Stay organized, focused, and get things done.</p>
+    </header>
+
+    <!-- Progress Card -->
+    <section class="progress-section" id="progress-container">
+      <div class="progress-info">
+        <span class="progress-label" id="progress-text">0 of 0 tasks completed</span>
+        <span class="progress-percent" id="progress-percent">0%</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-bar" id="progress-bar" style="width: 0%;"></div>
+      </div>
+    </section>
+
+    <!-- Main Card -->
+    <div class="card app-card">
+      <!-- Add Task Form -->
+      <form id="todo-form" class="todo-form" autocomplete="off">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="todo-input"
+            class="todo-input"
+            placeholder="What would you like to accomplish?"
+            maxlength="250"
+            autofocus
+            required
+          />
+          <button type="submit" id="add-btn" class="add-btn" aria-label="Add task">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Filter Controls & Actions -->
+      <div class="toolbar">
+        <div class="filters" role="tablist" aria-label="Task filters">
+          <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+            All <span class="badge" id="count-all">0</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="active" role="tab" aria-selected="false">
+            Active <span class="badge" id="count-active">0</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="completed" role="tab" aria-selected="false">
+            Completed <span class="badge" id="count-completed">0</span>
+          </button>
+        </div>
+
+        <button type="button" id="clear-completed-btn" class="clear-btn" style="display: none;">
+          Clear completed
+        </button>
+      </div>
+
+      <!-- Task List Container -->
+      <ul id="todo-list" class="todo-list" aria-label="Task list">
+        <!-- Rendered dynamically -->
+      </ul>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon-wrap">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <h2 class="empty-title" id="empty-title">All caught up!</h2>
+        <p class="empty-desc" id="empty-desc">No tasks to show. Add a task above to get started.</p>
+      </div>
+
+      <!-- Footer Info -->
+      <footer class="app-footer">
+        <div class="footer-stats">
+          <span id="items-left">0 items remaining</span>
+        </div>
+        <div class="footer-shortcuts">
+          <span><kbd>↵ Enter</kbd> to add</span>
+          <span>Double-click to edit</span>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

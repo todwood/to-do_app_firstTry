@@ -1,0 +1,17 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "A clean, modern To-Do app with Node.js backend",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "todo",
+    "nodejs",
+    "vanilla-js"
+  ],
+  "author": "",
+  "license": "MIT"
+}

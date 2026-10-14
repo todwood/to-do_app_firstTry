@@ -1,0 +1,40 @@
+[
+  {
+    "id": "ed678269-3cd9-4d6e-aae4-6916cc855863",
+    "title": "awdasdwasd",
+    "completed": false,
+    "createdAt": "2026-10-14T04:00:01.210Z",
+    "updatedAt": "2026-10-14T04:00:05.717Z"
+  },
+  {
+    "id": "6ca900dc-5a61-4101-a64c-91fad4a26b47",
+    "title": "asdasd",
+    "completed": false,
+    "createdAt": "2026-10-14T03:59:57.953Z",
+    "updatedAt": "2026-10-14T04:00:05.129Z"
+  },
+  {
+    "id": "610d8583-ff8c-4a55-a995-a8f529756370",
+    "title": "Test from Node API",
+    "completed": false,
+    "createdAt": "2026-10-14T03:57:50.447Z"
+  },
+  {
+    "id": "340ada80-2593-4a21-91a6-a68612950f22",
+    "title": "Welcome to your new To-Do app! 👋",
+    "completed": true,
+    "createdAt": "2026-10-14T02:51:18.126Z"
+  },
+  {
+    "id": "f4bca7fc-e911-402b-b327-b0f4568d13ae",
+    "title": "Add your own task in the box above ✍️",
+    "completed": false,
+    "createdAt": "2026-10-14T03:21:18.127Z"
+  },
+  {
+    "id": "f09503bf-7f97-48aa-b8df-792a79c9ba8f",
+    "title": "Check off or delete tasks as you finish them ✨",
+    "completed": false,
+    "createdAt": "2026-10-14T03:51:18.127Z"
+  }
+]
